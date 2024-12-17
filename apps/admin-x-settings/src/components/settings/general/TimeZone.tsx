@@ -29,7 +29,7 @@ const Hint: React.FC<HintProps> = ({timezone}) => {
     }, [timezone]);
     return (
         <>
-            The local time here is currently {currentTime}
+            التوقيت المحلي هنا حالياً هو {currentTime}
         </>
     );
 };
@@ -78,7 +78,7 @@ const TimeZone: React.FC<{ keywords: string[] }> = ({keywords}) => {
                 options={timezoneOptions}
                 selectedOption={timezoneOptions.find(option => option.value === publicationTimezone)}
                 testId='timezone-select'
-                title="Site timezone"
+                title="المنطقة الزمنية للموقع"
                 isSearchable
                 onSelect={option => handleTimezoneChange(option?.value)}
             />
@@ -87,13 +87,13 @@ const TimeZone: React.FC<{ keywords: string[] }> = ({keywords}) => {
 
     return (
         <TopLevelGroup
-            description='Set the time and date of your publication, used for all published posts'
+            description='تعيين وقت وتاريخ النشر الخاص بك، ويستخدم لجميع المنشورات المنشورة'
             isEditing={isEditing}
             keywords={keywords}
             navid='timezone'
             saveState={saveState}
             testId='timezone'
-            title='Site timezone'
+            title='المنطقة الزمنية للموقع'
             onCancel={handleCancel}
             onEditingChange={handleEditingChange}
             onSave={handleSave}
@@ -103,4 +103,4 @@ const TimeZone: React.FC<{ keywords: string[] }> = ({keywords}) => {
     );
 };
 
-export default withErrorBoundary(TimeZone, 'Site timezone');
+export default withErrorBoundary(TimeZone, 'المنطقة الزمنية للموقع');

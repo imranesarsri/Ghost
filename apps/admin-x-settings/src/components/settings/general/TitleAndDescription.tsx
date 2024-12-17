@@ -31,12 +31,12 @@ const TitleAndDescription: React.FC<{ keywords: string[] }> = ({keywords}) => {
             columns={2}
             values={[
                 {
-                    heading: 'Site title',
+                    heading: 'عنوان الموقع',
                     key: 'site-title',
                     value: title
                 },
                 {
-                    heading: 'Site description',
+                    heading: 'وصف الموقع',
                     key: 'site-description',
                     value: description
                 }
@@ -47,19 +47,19 @@ const TitleAndDescription: React.FC<{ keywords: string[] }> = ({keywords}) => {
     const inputFields = (
         <SettingGroupContent>
             <TextField
-                hint="The name of your site"
+                hint="اسم موقعك"
                 inputRef={focusRef}
                 maxLength={150}
-                placeholder="Site title"
-                title="Site title"
+                placeholder="عنوان الموقع"
+                title="عنوان الموقع"
                 value={title}
                 onChange={handleTitleChange}
             />
             <TextField
-                hint="A short description, used in your theme, meta data and search results"
+                hint="وصف قصير، يستخدم في موضوعك، البيانات الوصفية ونتائج البحث"
                 maxLength={200}
-                placeholder="Site description"
-                title="Site description"
+                placeholder="وصف الموقع"
+                title="وصف الموقع"
                 value={description}
                 onChange={handleDescriptionChange} />
         </SettingGroupContent>
@@ -67,13 +67,13 @@ const TitleAndDescription: React.FC<{ keywords: string[] }> = ({keywords}) => {
 
     return (
         <TopLevelGroup
-            description='The details used to identify your publication around the web'
-            isEditing={isEditing}
+        description='التفاصيل المستخدمة لتعريف منشورك على الإنترنت'
+        isEditing={isEditing}
             keywords={keywords}
             navid='general'
             saveState={saveState}
             testId='title-and-description'
-            title='Title & description'
+            title='العنوان والوصف'
             onCancel={handleCancel}
             onEditingChange={handleEditingChange}
             onSave={handleSave}
@@ -83,4 +83,4 @@ const TitleAndDescription: React.FC<{ keywords: string[] }> = ({keywords}) => {
     );
 };
 
-export default withErrorBoundary(TitleAndDescription, 'Title & description');
+export default withErrorBoundary(TitleAndDescription, 'العنوان والوصف');

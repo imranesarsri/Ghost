@@ -1,11 +1,11 @@
 import loginAsRole from '../../helpers/login-as-role';
-import {blur, click, currentURL, fillIn, find, waitFor, waitUntil} from '@ember/test-helpers';
-import {enableLabsFlag} from '../../helpers/labs-flag';
-import {expect} from 'chai';
-import {invalidateSession} from 'ember-simple-auth/test-support';
-import {setupApplicationTest} from 'ember-mocha';
-import {setupMirage} from 'ember-cli-mirage/test-support';
-import {visit} from '../../helpers/visit';
+import { blur, click, currentURL, fillIn, find, waitFor, waitUntil } from '@ember/test-helpers';
+import { enableLabsFlag } from '../../helpers/labs-flag';
+import { expect } from 'chai';
+import { invalidateSession } from 'ember-simple-auth/test-support';
+import { setupApplicationTest } from 'ember-mocha';
+import { setupMirage } from 'ember-cli-mirage/test-support';
+import { visit } from '../../helpers/visit';
 
 describe('Acceptance: Lexical editor', function () {
     let hooks = setupApplicationTest();
@@ -30,7 +30,7 @@ describe('Acceptance: Lexical editor', function () {
 
             await waitFor('[data-secondary-instance="false"] [data-lexical-editor]');
             // find the placeholder div
-            const xpath = '//div[text()="Begin writing your post..."]';
+            const xpath = '//div[text()="ابدأ في كتابة منشورك..."]';
             const match = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
             expect(match.singleNodeValue).to.exist;
         });
@@ -54,7 +54,7 @@ describe('Acceptance: Lexical editor', function () {
 
             await waitUntil(function () {
                 return find('[data-test-editor-post-status]').textContent.includes('Saved');
-            }, {timeoutMessage: 'Timed out waiting for "Saved" status'});
+            }, { timeoutMessage: 'Timed out waiting for "Saved" status' });
 
             expect(currentURL(), 'currentURL').to.equal(`/editor/post/1`);
         });
@@ -69,7 +69,7 @@ describe('Acceptance: Lexical editor', function () {
 
             await waitUntil(function () {
                 return find('[data-test-editor-post-status]').textContent.includes('Saved');
-            }, {timeoutMessage: 'Timed out waiting for "Saved" status'});
+            }, { timeoutMessage: 'Timed out waiting for "Saved" status' });
 
             expect(currentURL(), 'currentURL').to.equal(`/editor/post/1`);
         });
@@ -80,7 +80,7 @@ describe('Acceptance: Lexical editor', function () {
 
     describe('with existing post', function () {
         it('loads editor', async function () {
-            const post = this.server.create('post', {lexical: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This is a test","type":"extended-text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'});
+            const post = this.server.create('post', { lexical: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"This is a test","type":"extended-text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}' });
             await visit(`/editor/post/${post.id}`);
             expect(currentURL(), 'currentURL').to.equal(`/editor/post/${post.id}`);
             await waitFor('[data-secondary-instance="false"] [data-lexical-editor]');
@@ -89,7 +89,7 @@ describe('Acceptance: Lexical editor', function () {
         });
 
         it('does not save post on title blur', async function () {
-            const post = this.server.create('post', {status: 'published'});
+            const post = this.server.create('post', { status: 'published' });
             const originalTitle = post.title;
 
             await visit('/editor/post/1');
@@ -111,7 +111,7 @@ describe('Acceptance: Lexical editor', function () {
             // excerpt is not shown by default
             enableLabsFlag(this.server, 'editorExcerpt');
 
-            const post = this.server.create('post', {status: 'published'});
+            const post = this.server.create('post', { status: 'published' });
             const originalExcerpt = post.excerpt;
 
             await visit('/editor/post/1');

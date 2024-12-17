@@ -16,10 +16,10 @@
         {{/if}}
 
         {{#if this.onboarding.allStepsCompleted}}
-            <h2 class="gh-canvas-title">You’re all set.</h2>
+            <h2 class="gh-canvas-title">أنت جاهز تماماً.</h2>
         {{else}}
-            <h2 class="gh-canvas-title">Let’s get started!</h2>
-            <p>Welcome! It’s time to set up {{get-setting "title"}}.</p>
+            <h2 class="gh-canvas-title">هيا بنا نبدأ!</h2>
+            <p>مرحباً بكم! حان وقت الإعداد {{get-setting "title"}}.</p>
         {{/if}}
     </div>
 
@@ -29,7 +29,7 @@
             <div class="gh-onboarding-item gh-onboarding-item--completed">
                 <Dashboard::Onboarding::Step
                     @icon="rocket"
-                    @title="Start a new Ghost publication"
+                    @title="ابدأ منشور Ghost جديدًا"
                     @complete={{true}}
                 />
             </div>
@@ -37,8 +37,8 @@
             <LinkTo @route="settings-x.settings-x" @model="design/edit?ref=setup" class="gh-onboarding-item {{onboarding-step-class "customize-design"}}" id="ob-customize-design" {{on "click" (fn this.onboarding.markStepCompleted "customize-design")}}>
                 <Dashboard::Onboarding::Step
                     @icon="brush"
-                    @title="Customize your design"
-                    @description="Craft a look that reflects your brand and style."
+                    @title="خصص تصميمك"
+                    @description="ابتكر مظهرًا يعكس علامتك التجارية وأسلوبك."
                     @complete={{is-onboarding-step-completed "customize-design"}}
                 />
             </LinkTo>
@@ -46,8 +46,8 @@
             <LinkTo @route="lexical-editor.new" @model="post" class="gh-onboarding-item {{onboarding-step-class "first-post"}}" id="ob-first-post" {{on "click" (fn this.onboarding.markStepCompleted "first-post")}}>
                 <Dashboard::Onboarding::Step
                     @icon="writing"
-                    @title="Explore the editor"
-                    @description="Get to know a writing experience you'll love."
+                    @title="استكشف المُحرر"
+                    @description="تعرّف على تجربة كتابة ستُحبها."
                     @complete={{is-onboarding-step-completed "first-post"}}
                 />
             </LinkTo>
@@ -55,8 +55,8 @@
             <LinkTo @route="members" class="gh-onboarding-item {{onboarding-step-class "build-audience"}}" id="ob-build-audience" {{on "click" (fn this.onboarding.markStepCompleted "build-audience")}}>
                 <Dashboard::Onboarding::Step
                     @icon="member-add"
-                    @title="Build your audience"
-                    @description="Add members and grow your readership."
+                    @title="ابنِ جمهورك"
+                    @description="أضف الأعضاء وقم بتنمية قاعدة قرّائك."
                     @complete={{is-onboarding-step-completed "build-audience"}}
                 />
             </LinkTo>
@@ -64,8 +64,8 @@
             <div role="button" {{on "click" this.openShareModal}} class="gh-onboarding-item {{onboarding-step-class "share-publication"}}" id="ob-share-publication">
                 <Dashboard::Onboarding::Step
                     @icon="megaphone"
-                    @title="Share your publication"
-                    @description="Expand your reach on social media."
+                    @title="شارك منشورك"
+                    @description="وسّع نطاق وصولك عبر وسائل التواصل الاجتماعي."
                     @complete={{is-onboarding-step-completed "share-publication"}}
                     role="presentation"
                 />
@@ -74,12 +74,12 @@
     </div>
 
     {{#if this.onboarding.allStepsCompleted}}
-        <a href="#" class="gh-onboarding-explore-dashboard" id="ob-completed" {{on "click" this.onboarding.completeChecklist}}>Explore your dashboard</a>
+        <a href="#" class="gh-onboarding-explore-dashboard" id="ob-completed" {{on "click" this.onboarding.completeChecklist}}>استكشف لوحة التحكم الخاصة بك</a>
     {{/if}}
 
-    <p class="gh-onboarding-help">More questions? Check out our <a href="https://ghost.org/help?utm_source=admin&utm_campaign=onboarding" id="ob-help-center" target="_blank" rel="noopener noreferrer">Help Center</a>.</p>
+    <p class="gh-onboarding-help">هل لديك المزيد من الأسئلة؟ اطّلع على <a href="https://ghost.org/help?utm_source=admin&utm_campaign=onboarding" id="ob-help-center" target="_blank" rel="noopener noreferrer">Help Center</a>.</p>
 
     {{#unless this.onboarding.allStepsCompleted}}
-        <a href="#" class="gh-onboarding-skip" id="ob-skip" {{on "click" this.onboarding.dismissChecklist}}>Skip onboarding</a>
+        <a href="#" class="gh-onboarding-skip" id="ob-skip" {{on "click" this.onboarding.dismissChecklist}}>تخطي عملية التوجيه</a>
     {{/unless}}
 </div>
